@@ -18,7 +18,7 @@ pipeline {
    stages {
         stage('1. Obtener Codigo') {
             steps {
-                git branch: 'main', url: 'https://github.com'
+                git branch: 'main', url: 'https://github.com/angelrisuello2102-netizen/applicationLegacy.git'
             }
         }
 
