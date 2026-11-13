@@ -22,13 +22,19 @@ pipeline {
             }
         }
 
-        stage('2. Compilar y Empaquetar EAR') {
+        stage('2. Compilar y Generar WAR') {
+            steps {
+                bat 'mvn clean install -f MiModuleWeb/pom.xml'
+            }
+        }
+
+        stage('3. Compilar y Empaquetar EAR') {
             steps {
                 bat 'mvn clean package'
             }
         }
 
-        stage('3. Desplegar en WebSphere') {
+        stage('4. Desplegar en WebSphere') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'was-admin-creds', usernameVariable: 'wasadmin', passwordVariable: 'ayOpih94$$')]) {
                     bat """
